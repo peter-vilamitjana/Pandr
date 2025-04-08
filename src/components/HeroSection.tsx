@@ -28,6 +28,13 @@ const HeroSection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToCTA = () => {
+    const ctaSection = document.getElementById("cta");
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="relative min-h-screen pt-28 pb-32 flex flex-col items-center overflow-hidden hero-gradient">
       {/* Glowing Orb */}
@@ -81,7 +88,9 @@ const HeroSection = () => {
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up opacity-0" style={{ animationDelay: '0.6s' }}>
-            <Button className="bg-gradient-to-r from-pandr-ultraviolet to-pandr-accent hover:shadow-glow text-white px-6 py-6 text-lg w-full sm:w-auto">
+            <Button 
+              onClick={scrollToCTA}
+              className="bg-gradient-to-r from-pandr-ultraviolet to-pandr-accent hover:shadow-glow text-white px-6 py-6 text-lg w-full sm:w-auto">
               Get Started Free
             </Button>
             <Button variant="outline" className="border-pandr-violet/30 text-pandr-lavender hover:text-white hover:bg-pandr-darkGray/50 px-6 py-6 text-lg w-full sm:w-auto">

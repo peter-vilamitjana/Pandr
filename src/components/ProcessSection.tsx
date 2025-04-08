@@ -1,15 +1,19 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Settings, GitCommit, Maximize, Rocket } from 'lucide-react';
 
 interface ProcessStepProps {
   number: string;
   title: string;
   description: string;
   isActive: boolean;
+  icon: React.ReactNode;
+  subline?: string;
 }
 
-const ProcessStep = ({ number, title, description, isActive }: ProcessStepProps) => {
+const ProcessStep = ({ number, title, description, isActive, icon, subline }: ProcessStepProps) => {
   return (
     <motion.div
       className={cn(
@@ -25,7 +29,10 @@ const ProcessStep = ({ number, title, description, isActive }: ProcessStepProps)
           isActive ? 'bg-pandr-accent shadow-glow' : 'bg-pandr-darkGray border border-pandr-violet/30'
         )}
       />
-      <div className='text-sm text-pandr-lavender mb-2'>{number}</div>
+      <div className='text-sm text-pandr-lavender mb-2 flex items-center gap-2'>
+        <span>{number}</span>
+        <span className={cn('transition-opacity duration-300', isActive ? 'opacity-100' : 'opacity-50')}>{icon}</span>
+      </div>
       <h3
         className={cn(
           'text-2xl font-display font-bold mb-2 transition-all duration-300',
@@ -36,6 +43,11 @@ const ProcessStep = ({ number, title, description, isActive }: ProcessStepProps)
       <p className={cn('text-base transition-all duration-300', isActive ? 'text-gray-300' : 'text-gray-500')}>
         {description}
       </p>
+      {subline && (
+        <p className={cn('text-sm mt-2 transition-all duration-300', isActive ? 'text-pandr-lavender' : 'text-gray-600')}>
+          {subline}
+        </p>
+      )}
     </motion.div>
   );
 };
@@ -63,6 +75,169 @@ const ProcessSection = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const getStepContent = () => {
+    switch (activeStep) {
+      case 0:
+        return (
+          <div className='w-full h-full flex items-center justify-center'>
+            <div className='neo-blur rounded-lg p-6 w-[80%]'>
+              <div className='mb-3 flex items-center'>
+                <div className='w-6 h-6 rounded-full bg-pandr-accent/20 flex items-center justify-center mr-2'>
+                  <Settings className='w-3 h-3 text-pandr-accent' />
+                </div>
+                <div className='text-pandr-lavender font-semibold'>Environment Configuration</div>
+              </div>
+              <div className='space-y-3'>
+                <div className='flex items-center'>
+                  <div className='w-4 h-4 rounded bg-pandr-accent/30 flex items-center justify-center mr-2'>
+                    <div className='w-2 h-2 rounded-full bg-pandr-accent' />
+                  </div>
+                  <div className='text-gray-300 text-sm'>Theme: Cosmic Violet</div>
+                </div>
+                <div className='flex items-center'>
+                  <div className='w-4 h-4 rounded bg-pandr-accent/30 flex items-center justify-center mr-2'>
+                    <div className='w-2 h-2 rounded-full bg-pandr-accent' />
+                  </div>
+                  <div className='text-gray-300 text-sm'>Font: JetBrains Mono</div>
+                </div>
+                <div className='flex items-center'>
+                  <div className='w-4 h-4 rounded bg-pandr-accent/30 flex items-center justify-center mr-2'>
+                    <div className='w-2 h-2 rounded-full bg-pandr-accent' />
+                  </div>
+                  <div className='text-gray-300 text-sm'>Extensions: AI Assistant, Git Tools</div>
+                </div>
+                <div className='flex items-center'>
+                  <div className='w-4 h-4 rounded bg-pandr-accent/30 flex items-center justify-center mr-2'>
+                    <div className='w-2 h-2 rounded-full bg-pandr-accent' />
+                  </div>
+                  <div className='text-gray-300 text-sm'>Layout: Split Terminal</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      case 1:
+        return (
+          <div className='w-full h-full flex items-center justify-center'>
+            <div className='neo-blur rounded-lg p-6 w-[80%]'>
+              <div className='mb-3 flex items-center'>
+                <div className='w-6 h-6 rounded-full bg-pandr-accent/20 flex items-center justify-center mr-2'>
+                  <GitCommit className='w-3 h-3 text-pandr-accent' />
+                </div>
+                <div className='text-pandr-lavender font-semibold'>Git Commit Preview</div>
+              </div>
+              <div className='space-y-3'>
+                <div className='p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10'>
+                  <div className='flex items-start'>
+                    <div className='text-green-400 mr-2'>+</div>
+                    <div className='text-gray-300 text-xs font-mono'>
+                      const handleCommit = async () => &#123;
+                    </div>
+                  </div>
+                  <div className='flex items-start pl-4'>
+                    <div className='text-green-400 mr-2'>+</div>
+                    <div className='text-gray-300 text-xs font-mono'>
+                      await git.add('.');
+                    </div>
+                  </div>
+                  <div className='flex items-start pl-4'>
+                    <div className='text-green-400 mr-2'>+</div>
+                    <div className='text-gray-300 text-xs font-mono'>
+                      await git.commit('feat: add new feature');
+                    </div>
+                  </div>
+                  <div className='flex items-start'>
+                    <div className='text-green-400 mr-2'>+</div>
+                    <div className='text-gray-300 text-xs font-mono'>&#125;</div>
+                  </div>
+                </div>
+                <div className='mt-4 bg-pandr-darkGray/30 rounded-lg p-3 border border-pandr-violet/10'>
+                  <div className='text-xs text-gray-400 font-mono'>
+                    <div className='text-pandr-lavender mb-1'>
+                      Running Git Commit...
+                    </div>
+                    <div>
+                      [main 5f43cba] feat: add new feature
+                      <br />
+                      2 files changed, 48 insertions(+), 12 deletions(-)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className='w-full h-full flex items-center justify-center'>
+            <div className='neo-blur rounded-lg p-6 w-[80%]'>
+              <div className='mb-3 flex items-center'>
+                <div className='w-6 h-6 rounded-full bg-pandr-accent/20 flex items-center justify-center mr-2'>
+                  <Maximize className='w-3 h-3 text-pandr-accent' />
+                </div>
+                <div className='text-pandr-lavender font-semibold'>Zen Mode Activated</div>
+              </div>
+              <div className='h-[200px] bg-gradient-to-b from-pandr-darkGray/40 to-black/70 rounded-lg flex items-center justify-center border border-pandr-violet/10'>
+                <div className='text-center'>
+                  <div className='text-lg font-display font-light text-white/70 mb-2'>Focused Coding</div>
+                  <div className='text-xs text-pandr-lavender opacity-70'>
+                    Minimized UI • Zero Distractions • Enhanced Focus
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      case 3:
+        return (
+          <div className='w-full h-full flex items-center justify-center'>
+            <div className='neo-blur rounded-lg p-6 w-[80%]'>
+              <div className='mb-3 flex items-center'>
+                <div className='w-6 h-6 rounded-full bg-pandr-accent/20 flex items-center justify-center mr-2'>
+                  <Rocket className='w-3 h-3 text-pandr-accent' />
+                </div>
+                <div className='text-pandr-lavender font-semibold'>Deployment Status</div>
+              </div>
+              <div className='space-y-3'>
+                <div className='bg-pandr-darkGray/30 rounded-lg p-3 border border-pandr-violet/10'>
+                  <div className='flex items-center justify-between mb-2'>
+                    <div className='text-xs text-white font-medium'>CI/CD Pipeline</div>
+                    <div className='px-2 py-0.5 bg-green-500/20 rounded text-green-400 text-xs'>Passed</div>
+                  </div>
+                  <div className='w-full h-2 bg-pandr-darkGray rounded-full overflow-hidden'>
+                    <div className='h-full bg-gradient-to-r from-green-500 to-emerald-400 w-full'></div>
+                  </div>
+                </div>
+                <div className='flex items-center justify-between py-2'>
+                  <div className='flex items-center'>
+                    <div className='w-3 h-3 rounded-full bg-green-500 mr-2'></div>
+                    <div className='text-xs text-gray-300'>Unit Tests</div>
+                  </div>
+                  <div className='text-xs text-gray-400'>124/124 ✓</div>
+                </div>
+                <div className='flex items-center justify-between py-2'>
+                  <div className='flex items-center'>
+                    <div className='w-3 h-3 rounded-full bg-green-500 mr-2'></div>
+                    <div className='text-xs text-gray-300'>Integration Tests</div>
+                  </div>
+                  <div className='text-xs text-gray-400'>36/36 ✓</div>
+                </div>
+                <div className='flex items-center justify-between py-2'>
+                  <div className='flex items-center'>
+                    <div className='w-3 h-3 rounded-full bg-green-500 mr-2'></div>
+                    <div className='text-xs text-gray-300'>Deployment</div>
+                  </div>
+                  <div className='text-xs text-gray-400'>Successful</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <section id='process' className='py-32 relative overflow-hidden hero-gradient'>
@@ -97,79 +272,40 @@ const ProcessSection = () => {
                 number='STEP 01'
                 title='Environment Setup'
                 description='Customize your perfect environment with our AI assistant.'
+                subline='Configure once, code anywhere'
                 isActive={activeStep === 0}
+                icon={<Settings className="w-4 h-4 text-pandr-lavender" />}
               />
               <ProcessStep
                 number='STEP 02'
                 title='First Commit'
                 description='Streamlined git operations with smart suggestions.'
+                subline='Version control made simple'
                 isActive={activeStep === 1}
+                icon={<GitCommit className="w-4 h-4 text-pandr-lavender" />}
               />
               <ProcessStep
                 number='STEP 03'
                 title='Zen Mode Focus'
                 description='Eliminate distractions with Zen Mode.'
+                subline='Achieve deep work state'
                 isActive={activeStep === 2}
+                icon={<Maximize className="w-4 h-4 text-pandr-lavender" />}
               />
               <ProcessStep
                 number='STEP 04'
                 title='Ship with Confidence'
                 description='Testing and CI/CD workflows for production-ready code.'
+                subline='Deploy without fear'
                 isActive={activeStep === 3}
+                icon={<Rocket className="w-4 h-4 text-pandr-lavender" />}
               />
             </div>
 
             {/* Sticky Visualization */}
             <div className='lg:sticky lg:top-24 h-[600px]'>
               <div className='neo-blur rounded-lg w-full h-full overflow-hidden relative'>
-                <div className='absolute inset-0 flex items-center justify-center'>
-                  <div className='relative w-[80%] h-[80%]'>
-                    {/* Central node */}
-                    <div
-                      className={cn(
-                        'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full transition-all duration-700',
-                        'bg-pandr-violet/20 shadow-glow'
-                      )}>
-                      <div className='absolute inset-0 flex items-center justify-center'>
-                        <div className='text-2xl font-display font-bold text-white'>Pandr.</div>
-                      </div>
-                    </div>
-
-                    {/* Orbiting nodes */}
-                    {[0, 1, 2, 3].map(step => {
-                      const totalSteps = 4;
-                      const baseAngle = (step * (Math.PI * 2)) / totalSteps;
-                      const rotation = (activeStep * (Math.PI * 2)) / totalSteps;
-                      const angle = baseAngle + rotation;
-                      const radius = 140;
-                      const x = Math.cos(angle) * radius;
-                      const y = Math.sin(angle) * radius;
-
-                      return (
-                        <motion.div
-                          key={step}
-                          className={cn(
-                            'absolute w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700',
-                            activeStep === step
-                              ? 'bg-pandr-accent/30 border border-pandr-accent'
-                              : 'bg-pandr-darkGray/30 border border-pandr-violet/20'
-                          )}
-                          style={{
-                            left: `calc(50% + ${x}px - 24px)`,
-                            top: `calc(50% + ${y}px - 24px)`
-                          }}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: activeStep === step ? 1 : 0.5 }}
-                          transition={{ duration: 0.5 }}>
-                          <div
-                            className={cn('text-lg font-bold', activeStep === step ? 'text-white' : 'text-gray-500')}>
-                            {step + 1}
-                          </div>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
+                {getStepContent()}
 
                 <div className='absolute bottom-6 left-0 right-0 text-center'>
                   <div className='text-sm text-pandr-lavender'>

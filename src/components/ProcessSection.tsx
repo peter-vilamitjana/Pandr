@@ -45,11 +45,12 @@ const ProcessStep = ({ number, title, description, isActive }: ProcessStepProps)
 
 const ProcessSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const stickyRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !stickyRef.current) return;
 
       const container = containerRef.current;
       const containerTop = container.getBoundingClientRect().top;
@@ -57,7 +58,7 @@ const ProcessSection = () => {
       const windowHeight = window.innerHeight;
       const scrollPosition = -containerTop + windowHeight * 0.4;
 
-      const stepHeight = containerHeight / 4; // 4 steps
+      const stepHeight = containerHeight / 4;
       const newActiveStep = Math.min(
         3,
         Math.max(0, Math.floor(scrollPosition / stepHeight))
@@ -71,7 +72,7 @@ const ProcessSection = () => {
   }, []);
 
   return (
-    <section id="process" className="py-32 relative overflow-hidden">
+    <section id="process" className="py-32 relative overflow-visible">
       <div className="absolute inset-0 grid-bg opacity-10" />
       <div className="container relative z-10">
         <div className="mb-16 text-center">
@@ -84,7 +85,6 @@ const ProcessSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Process Steps */}
           <div ref={containerRef} className="relative px-4">
             <div className="relative">
               <ProcessStep
@@ -114,12 +114,10 @@ const ProcessSection = () => {
             </div>
           </div>
 
-          {/* Sticky Visualization */}
-          <div className="lg:sticky lg:top-24 h-[600px]">
+          <div className="lg:sticky lg:top-24 h-[calc(100vh-6rem)]" ref={stickyRef}>
             <div className="neo-blur rounded-lg w-full h-full overflow-hidden relative">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-[80%] h-[80%]">
-                  {/* Central node */}
                   <div
                     className={cn(
                       "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full transition-all duration-700",
@@ -127,11 +125,10 @@ const ProcessSection = () => {
                     )}
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-2xl font-display font-bold text-white">Pandr.</div>
+                      <div className="text-3xl font-display font-bold text-white">Pandr.</div>
                     </div>
                   </div>
 
-                  {/* Orbiting nodes */}
                   {[0, 1, 2, 3].map((step) => {
                     const totalSteps = 4;
                     const baseAngle = (step * (Math.PI * 2)) / totalSteps;
@@ -146,26 +143,20 @@ const ProcessSection = () => {
                         key={step}
                         className={cn(
                           "absolute w-12 h-12 rounded-full flex items-center justify-center transition-all duration-700",
-                          activeStep === step ? "bg-pandr-accent/30 border border-pandr-accent" : "bg-pandr-darkGray/30 border border-pandr-violet/20"
+                          activeStep === step ? "bg-pandr-accent/30 border border-pandr-accent shadow-glow text-white" : "bg-pandr-darkGray/30 border border-pandr-violet/20 text-gray-500"
                         )}
                         style={{
                           left: `calc(50% + ${x}px - 24px)`,
                           top: `calc(50% + ${y}px - 24px)`
                         }}
                       >
-                        <div
-                          className={cn(
-                            "text-lg font-bold",
-                            activeStep === step ? "text-white" : "text-gray-500"
-                          )}
-                        >
+                        <div className="text-lg font-bold">
                           {step + 1}
                         </div>
                       </div>
                     );
                   })}
 
-                  {/* Connection lines */}
                   <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 400">
                     {[0, 1, 2, 3].map((step) => {
                       const totalSteps = 4;
@@ -197,7 +188,7 @@ const ProcessSection = () => {
               </div>
 
               <div className="absolute bottom-6 left-0 right-0 text-center">
-                <div className="text-sm text-pandr-lavender">
+                <div className="text-base font-semibold text-white">
                   {activeStep === 0 && "Setting up your perfect environment"}
                   {activeStep === 1 && "Streamlining your first commit"}
                   {activeStep === 2 && "Entering deep focus with Zen Mode"}
@@ -213,3 +204,4 @@ const ProcessSection = () => {
 };
 
 export default ProcessSection;
+

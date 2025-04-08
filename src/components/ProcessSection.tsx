@@ -132,7 +132,7 @@ const ProcessSection = () => {
                   <div className='flex items-start'>
                     <div className='text-green-400 mr-2'>+</div>
                     <div className='text-gray-300 text-xs font-mono'>
-                      const handleCommit = async () => &#123;
+                      const handleCommit = async () =&gt; &#123;
                     </div>
                   </div>
                   <div className='flex items-start pl-4'>

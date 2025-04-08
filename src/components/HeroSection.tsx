@@ -134,18 +134,18 @@ const HeroSection = () => {
             </div>
             
             <div className="flex h-[200px]">
-              {/* Left Sidebar with Icons */}
+              {/* Enhanced Left Sidebar with Icons */}
               <div className="w-12 bg-pandr-mediumGray/30 border-r border-pandr-violet/5 flex flex-col items-center py-3 gap-4">
                 {[...Array(5)].map((_, i) => (
                   <div key={i} className="w-6 h-6 rounded bg-white/5 flex items-center justify-center">
-                    <div className="w-3 h-3 rounded-sm bg-pandr-violet/40" />
+                    <div className={`w-3 h-3 ${i === 0 ? 'bg-pandr-violet/60' : 'bg-pandr-violet/40'} rounded-sm`} />
                   </div>
                 ))}
               </div>
               
-              {/* Main Code Editor */}
+              {/* Main Code Editor - Now left-aligned */}
               <div className="flex-1 p-4 text-left overflow-hidden">
-                <pre className="text-xs sm:text-sm">
+                <pre className="text-xs sm:text-sm text-left">
                   <code className="font-mono">
                     <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
                     <br /><br />

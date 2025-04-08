@@ -111,20 +111,20 @@ const FeaturesSection = () => {
             </div>
             
             <div className="grid grid-cols-12">
-              {/* Left Sidebar with improved icons */}
+              {/* Enhanced Left Sidebar with improved icons */}
               <div className="col-span-1 bg-pandr-mediumGray/30 p-2 border-r border-pandr-violet/5">
                 <div className="flex flex-col gap-4 items-center py-2">
                   {[...Array(6)].map((_, i) => (
                     <div key={i} className="w-6 h-6 rounded bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
-                      <div className="w-3 h-3 rounded-sm bg-pandr-violet/40" />
+                      <div className={`w-3 h-3 rounded-sm ${i === 0 ? 'bg-pandr-violet/70' : 'bg-pandr-violet/40'}`} />
                     </div>
                   ))}
                 </div>
               </div>
               
-              {/* Main Editor */}
+              {/* Main Editor - Left aligned text */}
               <div className="col-span-8 p-4">
-                <pre className="text-xs overflow-hidden">
+                <pre className="text-xs overflow-hidden text-left">
                   <code>
                     <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect, useRef &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
                     <br />
@@ -167,20 +167,44 @@ const FeaturesSection = () => {
                 <div className="space-y-3">
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
                     <div className="text-xs text-yellow-300 mb-1">Add type annotation</div>
-                    <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
-                    <div className="h-2 w-1/2 bg-white/10 rounded mb-1.5" />
-                    <div className="h-2 w-2/3 bg-white/10 rounded" />
+                    <div className="flex items-center mb-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-3/4 bg-white/10 rounded"></div>
+                    </div>
+                    <div className="flex items-center mb-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-1/2 bg-white/10 rounded"></div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-2/3 bg-white/10 rounded"></div>
+                    </div>
                   </div>
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
                     <div className="text-xs text-blue-400 mb-1">Extract hook</div>
-                    <div className="h-2 w-full bg-white/10 rounded mb-1.5" />
-                    <div className="h-2 w-4/5 bg-white/10 rounded mb-1.5" />
-                    <div className="h-2 w-3/5 bg-white/10 rounded" />
+                    <div className="flex items-center mb-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-full bg-white/10 rounded"></div>
+                    </div>
+                    <div className="flex items-center mb-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-4/5 bg-white/10 rounded"></div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-violet/50 mr-1.5"></div>
+                      <div className="h-2 w-3/5 bg-white/10 rounded"></div>
+                    </div>
                   </div>
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10 border-l-2 border-l-pandr-accent">
                     <div className="text-xs text-pandr-accent mb-1">Recommended pattern</div>
-                    <div className="h-2 w-2/3 bg-white/10 rounded mb-1.5" />
-                    <div className="h-2 w-3/4 bg-white/10 rounded" />
+                    <div className="flex items-center mb-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-accent/70 mr-1.5"></div>
+                      <div className="h-2 w-2/3 bg-white/10 rounded"></div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="w-1.5 h-1.5 rounded-full bg-pandr-accent/70 mr-1.5"></div>
+                      <div className="h-2 w-3/4 bg-white/10 rounded"></div>
+                    </div>
                   </div>
                 </div>
               </div>

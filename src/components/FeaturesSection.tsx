@@ -133,7 +133,7 @@ const FeaturesSection = () => {
                     <br />
                     <span className="text-green-400">// ZenMode component - focuses on the essential code</span>
                     <br />
-                    <span className="text-blue-400">const</span> <span className="text-yellow-300">ZenMode</span> <span className="text-white">=</span> <span className="text-blue-400">() =&gt;</span> <span className="text-white">&#123;</span>
+                    <span className="text-blue-400">const</span> <span className="text-yellow-300">ZenMode</span> <span className="text-white">=</span> <span className="text-blue-400">()</span> <span className="text-white">=&gt;</span> <span className="text-white">&#123;</span>
                     <br />
                     &nbsp;&nbsp;<span className="text-blue-400">const</span> <span className="text-white">editorRef</span> <span className="text-white">=</span> <span className="text-yellow-300">useRef</span><span className="text-white">(</span><span className="text-purple-400">null</span><span className="text-white">);</span>
                     <br />
@@ -166,16 +166,19 @@ const FeaturesSection = () => {
                 <div className="mb-4 text-xs font-semibold text-pandr-lavender">AI Suggestions</div>
                 <div className="space-y-3">
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="text-xs text-yellow-300 mb-1">Add type annotation</div>
                     <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-1/2 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-2/3 bg-white/10 rounded" />
                   </div>
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="text-xs text-blue-400 mb-1">Extract hook</div>
                     <div className="h-2 w-full bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-4/5 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-3/5 bg-white/10 rounded" />
                   </div>
-                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10 border-l-2 border-l-pandr-accent">
+                    <div className="text-xs text-pandr-accent mb-1">Recommended pattern</div>
                     <div className="h-2 w-2/3 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-3/4 bg-white/10 rounded" />
                   </div>

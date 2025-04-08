@@ -54,25 +54,35 @@ const ProcessStep = ({ number, title, description, isActive, icon, subline }: Pr
 
 const ProcessSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current || !stepsRef.current) return;
 
       const container = containerRef.current;
-      const containerTop = container.getBoundingClientRect().top;
-      const containerHeight = container.offsetHeight;
+      const steps = stepsRef.current;
+      const stepsTop = steps.getBoundingClientRect().top;
+      const stepsHeight = steps.offsetHeight;
       const windowHeight = window.innerHeight;
-      const scrollPosition = -containerTop + windowHeight * 0.4;
-
-      const stepHeight = containerHeight / 4; // 4 steps
+      
+      // Calculate relative scroll position within the steps container
+      const scrollPosition = -stepsTop + windowHeight * 0.5;
+      
+      // Calculate step height (total height divided by number of steps)
+      const stepHeight = stepsHeight / 4; // 4 steps
+      
+      // Determine active step based on scroll position
       const newActiveStep = Math.min(3, Math.max(0, Math.floor(scrollPosition / stepHeight)));
-
+      
       setActiveStep(newActiveStep);
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Trigger once on mount to set initial state
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -265,8 +275,8 @@ const ProcessSection = () => {
           </h2>
           <p className='section-subtitle mx-auto mb-10'>Maximize developer flow and eliminate friction points</p>
 
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-16'>
-            <div ref={containerRef} className='relative px-4'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-16' ref={containerRef}>
+            <div ref={stepsRef} className='relative px-4 min-h-[600px]'>
               {/* Process Steps */}
               <ProcessStep
                 number='STEP 01'
@@ -302,8 +312,8 @@ const ProcessSection = () => {
               />
             </div>
 
-            {/* Sticky Visualization */}
-            <div className='lg:sticky lg:top-24 h-[600px]'>
+            {/* Sticky Visualization - Made to stay centered vertically */}
+            <div className='sticky top-1/2 transform -translate-y-1/2 h-[600px] hidden lg:block'>
               <div className='neo-blur rounded-lg w-full h-full overflow-hidden relative'>
                 {getStepContent()}
 
@@ -315,6 +325,13 @@ const ProcessSection = () => {
                     {activeStep === 3 && 'Shipping with complete confidence'}
                   </div>
                 </div>
+              </div>
+            </div>
+            
+            {/* Mobile version (non-sticky) */}
+            <div className='lg:hidden h-[400px] mt-8'>
+              <div className='neo-blur rounded-lg w-full h-full overflow-hidden relative'>
+                {getStepContent()}
               </div>
             </div>
           </div>

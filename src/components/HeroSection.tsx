@@ -1,9 +1,12 @@
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SignupModal from "./SignupModal";
 
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -34,6 +37,9 @@ const HeroSection = () => {
       ctaSection.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <section className="relative min-h-screen pt-28 pb-32 flex flex-col items-center overflow-hidden hero-gradient">
@@ -89,7 +95,7 @@ const HeroSection = () => {
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up opacity-0" style={{ animationDelay: '0.6s' }}>
             <Button 
-              onClick={scrollToCTA}
+              onClick={openModal}
               className="bg-gradient-to-r from-pandr-ultraviolet to-pandr-accent hover:shadow-glow text-white px-6 py-6 text-lg w-full sm:w-auto">
               Get Started Free
             </Button>
@@ -168,17 +174,24 @@ const HeroSection = () => {
                 </pre>
               </div>
               
-              {/* Right AI Suggestions Panel */}
+              {/* Enhanced Right AI Suggestions Panel */}
               <div className="w-64 bg-pandr-mediumGray/30 border-l border-pandr-violet/5 p-4">
                 <div className="text-xs font-semibold text-pandr-lavender mb-3">AI Suggestions</div>
                 <div className="space-y-3">
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="text-xs text-cyan-300 mb-1">Import optimization</div>
                     <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-1/2 bg-white/10 rounded" />
                   </div>
                   <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="text-xs text-green-400 mb-1">Type inference</div>
                     <div className="h-2 w-4/5 bg-white/10 rounded mb-1.5" />
                     <div className="h-2 w-2/3 bg-white/10 rounded" />
+                  </div>
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10 border-l-2 border-l-pandr-accent">
+                    <div className="text-xs text-pandr-accent mb-1">Performance suggestion</div>
+                    <div className="h-2 w-3/5 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-4/5 bg-white/10 rounded" />
                   </div>
                 </div>
               </div>
@@ -186,6 +199,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <SignupModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   );
 };

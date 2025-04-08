@@ -1,73 +1,43 @@
-# Welcome to your Lovable project
+# Pandr
 
-## Project info
+Welcome to **Pandr**, a modern developer-focused IDE built with performance, clarity, and elegance in mind. This project was created as part of a hands-on deliverable using [Lovable](https://lovable.dev), a no-code/low-code visual builder for modern apps.
 
-**URL**: https://lovable.dev/projects/83c02841-762d-4aaf-b18a-98b79d6752a5
+This project was developed as a technical challenge to showcase my design expertise, the integration of visual components, React interactivity, and modern UX/UI principles. Initially created as a prototype on Lovable, I then took the project further by refining and enhancing the design locally in Visual Studio Code, focusing on improving both the visual structure and the dynamic interactions of the site.
 
-## How can I edit this code?
+## 🌐 Live Project
 
-There are several ways of editing your application.
+[View on Lovable](https://lovable.dev/projects/83c02841-762d-4aaf-b18a-98b79d6752a5)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/83c02841-762d-4aaf-b18a-98b79d6752a5) and start prompting.
+## 🚀 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+This project was built with:
 
-**Use your preferred IDE**
+- ⚡️ [Vite](https://vitejs.dev/) – Next Generation Frontend Tooling
+- ⚛️ [React](https://react.dev/) – UI Library
+- 🟦 [TypeScript](https://www.typescriptlang.org/) – Typed JavaScript
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) – Utility-first CSS Framework
+- 🧩 [shadcn/ui](https://ui.shadcn.com/) – UI components built with Radix and Tailwind
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📁 Project Structure
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+├── public/              # Archivos estáticos
+├── src/
+│   ├── components/      # Componentes reutilizables
+│   ├── sections/        # Secciones específicas de la landing
+│   ├── assets/          # Imágenes, íconos, media
+│   └── App.tsx          # Componente raíz
+├── index.html
+├── tailwind.config.ts  # Configuración Tailwind
+├── vite.config.ts      # Configuración Vite
+└── README.md           # Este archivo
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Built by [Pedro Vilamitjana](https://github.com/peter-vilamitjana)
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/83c02841-762d-4aaf-b18a-98b79d6752a5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)

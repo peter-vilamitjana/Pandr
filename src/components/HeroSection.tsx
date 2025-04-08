@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -89,44 +90,89 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Code Preview dentro del hero */}
+          {/* Enhanced Code Preview */}
           <div 
             className="mt-16 w-[90%] max-w-5xl mx-auto glassmorphism rounded-lg border-t border-pandr-violet/20 shadow-glow animate-slide-up opacity-0" 
             style={{ animationDelay: '0.8s' }}
           >
-            <div className="flex items-center gap-1.5 absolute left-4 top-4">
-              <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
-              <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+            {/* Improved Tab Bar */}
+            <div className="py-3 px-4 border-b border-pandr-violet/10 flex items-center justify-between bg-pandr-darkGray/70">
+              <div className="flex items-center">
+                <div className="flex items-center gap-1.5 mr-4">
+                  <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+                </div>
+                <div className="flex space-x-1">
+                  <div className="px-3 py-1 rounded-t bg-pandr-violet/20 text-xs text-pandr-lavender">PandrEditor.jsx</div>
+                  <div className="px-3 py-1 rounded-t bg-pandr-darkGray/50 text-xs text-gray-400">theme.ts</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-sm bg-pandr-lavender/40" />
+                </div>
+                <div className="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-sm bg-pandr-lavender/40" />
+                </div>
+              </div>
             </div>
-            <div className="overflow-hidden h-[150px] sm:h-[200px] p-8">
-              <pre className="text-xs sm:text-sm overflow-hidden">
-                <code className="font-mono">
-                  <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
-                  <br /><br />
-                  <span className="text-blue-400">const</span> <span className="text-yellow-300">PandrEditor</span> <span className="text-white">=</span> <span className="text-blue-400">()</span> <span className="text-white">=&gt;</span> <span className="text-white">&#123;</span>
-                  <br />
-                  &nbsp;&nbsp;<span className="text-blue-400">const</span> [code, setCode] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">""</span>);
-                  <br />
-                  &nbsp;&nbsp;<span className="text-blue-400">const</span> [theme, setTheme] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">"cosmic-violet"</span>);
-                  <br /><br />
-                  &nbsp;&nbsp;<span className="text-yellow-300">useEffect</span>(() =&gt; &#123;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">const</span> pandr = <span className="text-blue-400">new</span> <span className="text-yellow-300">PandrEngine</span>(&#123;
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theme,
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoComplete: <span className="text-purple-400">true</span>,
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zenMode: <span className="text-purple-400">true</span>
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;&#125;);
-                  <br /><br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;pandr.init();
-                  <br />
-                  &nbsp;&nbsp;&#125;, [theme]);
-                </code>
-              </pre>
+            
+            <div className="flex h-[200px]">
+              {/* Left Sidebar with Icons */}
+              <div className="w-12 bg-pandr-mediumGray/30 border-r border-pandr-violet/5 flex flex-col items-center py-3 gap-4">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="w-6 h-6 rounded bg-white/5 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-sm bg-pandr-violet/40" />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Main Code Editor */}
+              <div className="flex-1 p-4 text-left overflow-hidden">
+                <pre className="text-xs sm:text-sm">
+                  <code className="font-mono">
+                    <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
+                    <br /><br />
+                    <span className="text-blue-400">const</span> <span className="text-yellow-300">PandrEditor</span> <span className="text-white">=</span> <span className="text-blue-400">()</span> <span className="text-white">=&gt;</span> <span className="text-white">&#123;</span>
+                    <br />
+                    &nbsp;&nbsp;<span className="text-blue-400">const</span> [code, setCode] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">""</span>);
+                    <br />
+                    &nbsp;&nbsp;<span className="text-blue-400">const</span> [theme, setTheme] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">"cosmic-violet"</span>);
+                    <br /><br />
+                    &nbsp;&nbsp;<span className="text-yellow-300">useEffect</span>(() =&gt; &#123;
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">const</span> pandr = <span className="text-blue-400">new</span> <span className="text-yellow-300">PandrEngine</span>(&#123;
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theme,
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoComplete: <span className="text-purple-400">true</span>,
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zenMode: <span className="text-purple-400">true</span>
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&#125;);
+                    <br /><br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;pandr.init();
+                    <br />
+                    &nbsp;&nbsp;&#125;, [theme]);
+                  </code>
+                </pre>
+              </div>
+              
+              {/* Right AI Suggestions Panel */}
+              <div className="w-64 bg-pandr-mediumGray/30 border-l border-pandr-violet/5 p-4">
+                <div className="text-xs font-semibold text-pandr-lavender mb-3">AI Suggestions</div>
+                <div className="space-y-3">
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-1/2 bg-white/10 rounded" />
+                  </div>
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="h-2 w-4/5 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-2/3 bg-white/10 rounded" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

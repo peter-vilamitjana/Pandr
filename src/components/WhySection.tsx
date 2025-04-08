@@ -1,6 +1,7 @@
 
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const WhySection = () => {
   return (
@@ -70,17 +71,33 @@ const WhySection = () => {
                     <h4 className="font-semibold text-lg text-pandr-lavender">From Our Users</h4>
                     
                     <div className="p-4 rounded bg-white/5">
-                      <p className="text-gray-300 italic text-sm">
-                        "Pandr has fundamentally changed how I work. The focus I can achieve now wasn't possible with my previous setup."
-                      </p>
-                      <p className="text-xs text-pandr-lavender mt-2">— Sarah K., Senior Engineer</p>
+                      <div className="flex items-start">
+                        <Avatar className="h-8 w-8 mr-3 mt-1 border border-pandr-violet/20">
+                          <AvatarImage src="https://i.pravatar.cc/100?img=37" alt="Sarah K." />
+                          <AvatarFallback className="bg-pandr-ultraviolet/20 text-pandr-lavender text-xs">SK</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="text-gray-300 italic text-sm">
+                            "Pandr has fundamentally changed how I work. The focus I can achieve now wasn't possible with my previous setup."
+                          </p>
+                          <p className="text-xs text-pandr-lavender mt-2">— Sarah K., Senior Engineer</p>
+                        </div>
+                      </div>
                     </div>
                     
                     <div className="p-4 rounded bg-white/5">
-                      <p className="text-gray-300 italic text-sm">
-                        "The cognitive load reduction is real. I spend less mental energy on my tools and more on actual problem-solving."
-                      </p>
-                      <p className="text-xs text-pandr-lavender mt-2">— Marcus T., Tech Lead</p>
+                      <div className="flex items-start">
+                        <Avatar className="h-8 w-8 mr-3 mt-1 border border-pandr-violet/20">
+                          <AvatarImage src="https://i.pravatar.cc/100?img=53" alt="Marcus T." />
+                          <AvatarFallback className="bg-pandr-ultraviolet/20 text-pandr-lavender text-xs">MT</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="text-gray-300 italic text-sm">
+                            "The cognitive load reduction is real. I spend less mental energy on my tools and more on actual problem-solving."
+                          </p>
+                          <p className="text-xs text-pandr-lavender mt-2">— Marcus T., Tech Lead</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

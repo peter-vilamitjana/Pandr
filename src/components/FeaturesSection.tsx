@@ -86,21 +86,36 @@ const FeaturesSection = () => {
         
         <div className="mt-24">
           <div className="neo-blur rounded-xl overflow-hidden">
-            <div className="py-3 px-4 border-b border-pandr-violet/10 flex items-center">
-              <div className="flex items-center gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
-                <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+            {/* Improved Tab Bar */}
+            <div className="py-3 px-4 border-b border-pandr-violet/10 flex items-center justify-between bg-pandr-darkGray/70">
+              <div className="flex items-center">
+                <div className="flex items-center gap-1.5 mr-4">
+                  <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
+                  <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+                </div>
+                <div className="flex space-x-1">
+                  <div className="px-3 py-1 rounded-t bg-pandr-violet/20 text-xs text-pandr-lavender">ZenMode.tsx</div>
+                  <div className="px-3 py-1 rounded-t bg-pandr-darkGray/80 text-xs text-gray-400">utils.ts</div>
+                  <div className="px-3 py-1 rounded-t bg-pandr-darkGray/80 text-xs text-gray-400">types.d.ts</div>
+                </div>
               </div>
-              <div className="ml-4 text-sm text-gray-400">Pandr IDE - ZenMode.tsx</div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-sm bg-pandr-lavender/40" />
+                </div>
+                <div className="w-4 h-4 rounded-full bg-white/5 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-sm bg-pandr-lavender/40" />
+                </div>
+              </div>
             </div>
             
             <div className="grid grid-cols-12">
-              {/* Left Sidebar */}
+              {/* Left Sidebar with improved icons */}
               <div className="col-span-1 bg-pandr-mediumGray/30 p-2 border-r border-pandr-violet/5">
-                <div className="flex flex-col gap-4 items-center">
+                <div className="flex flex-col gap-4 items-center py-2">
                   {[...Array(6)].map((_, i) => (
-                    <div key={i} className="w-6 h-6 rounded bg-white/5 flex items-center justify-center">
+                    <div key={i} className="w-6 h-6 rounded bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors cursor-pointer">
                       <div className="w-3 h-3 rounded-sm bg-pandr-violet/40" />
                     </div>
                   ))}
@@ -109,12 +124,6 @@ const FeaturesSection = () => {
               
               {/* Main Editor */}
               <div className="col-span-8 p-4">
-                <div className="flex gap-2 mb-4">
-                  <div className="px-3 py-1 rounded bg-pandr-violet/20 text-xs text-pandr-lavender">index.tsx</div>
-                  <div className="px-3 py-1 rounded bg-pandr-darkGray/80 text-xs text-gray-400">utils.ts</div>
-                  <div className="px-3 py-1 rounded bg-pandr-darkGray/80 text-xs text-gray-400">types.d.ts</div>
-                </div>
-                
                 <pre className="text-xs overflow-hidden">
                   <code>
                     <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect, useRef &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
@@ -152,16 +161,24 @@ const FeaturesSection = () => {
                 </pre>
               </div>
               
-              {/* Right Sidebar */}
+              {/* Enhanced Right Sidebar with AI Suggestions */}
               <div className="col-span-3 bg-pandr-mediumGray/30 p-4 border-l border-pandr-violet/5">
-                <div className="mb-4 text-xs font-semibold text-gray-300">AI Suggestions</div>
+                <div className="mb-4 text-xs font-semibold text-pandr-lavender">AI Suggestions</div>
                 <div className="space-y-3">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
-                      <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
-                      <div className="h-2 w-1/2 bg-white/10 rounded" />
-                    </div>
-                  ))}
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="h-2 w-3/4 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-1/2 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-2/3 bg-white/10 rounded" />
+                  </div>
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="h-2 w-full bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-4/5 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-3/5 bg-white/10 rounded" />
+                  </div>
+                  <div className="p-2 rounded bg-pandr-darkGray/50 border border-pandr-violet/10">
+                    <div className="h-2 w-2/3 bg-white/10 rounded mb-1.5" />
+                    <div className="h-2 w-3/4 bg-white/10 rounded" />
+                  </div>
                 </div>
               </div>
             </div>

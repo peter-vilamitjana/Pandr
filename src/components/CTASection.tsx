@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 const CTASection = () => {
   return (
-    <section className='py-32 relative overflow-hidden hero-gradient'>
+    <section id='pricing' className='py-32 relative overflow-hidden hero-gradient'>
       {/* Floating particles */}
       <div className='absolute inset-0'>
         {[...Array(30)].map((_, i) => (
@@ -50,19 +50,12 @@ const CTASection = () => {
               {/* Google */}
               <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
                 <img
-                  src='https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg'
+                  src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg'
                   alt='Google'
-                  className='h-8 w-auto grayscale'
+                  className='h-8 w-auto invert brightness-[200]'
                 />
               </div>
-              {/* Meta */}
-              <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
-                <img
-                  src='https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png'
-                  alt='Meta'
-                  className='h-8 w-auto grayscale'
-                />
-              </div>
+
               {/* GitHub (white version) */}
               <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
                 <img
@@ -71,12 +64,31 @@ const CTASection = () => {
                   className='h-8 w-auto grayscale invert'
                 />
               </div>
+
               {/* Spotify */}
               <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
                 <img
-                  src='https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg'
+                  src='https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/spotify.svg'
+                  className='h-8 w-auto text-white invert'
                   alt='Spotify'
-                  className='h-8 w-auto grayscale'
+                />
+              </div>
+
+              {/* Disney */}
+              <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
+                <img
+                  src='https://static.educacionit.com/educacionit/assets/logotype-disney-gray.svg'
+                  alt='Disney'
+                  className='contrast-[3] brightness-110 mx-2 min-h-[35px] max-w-[80px] lg:max-h-[50px] lg:max-w-[170px]'
+                />
+              </div>
+
+              {/* Globant */}
+              <div className='bg-white/5 backdrop-blur-sm rounded-xl px-8 py-5 flex items-center justify-center'>
+                <img
+                  src='https://static.educacionit.com/educacionit/assets/imagotype-globant-gray.svg'
+                  alt='Globant'
+                  className='contrast-[3] brightness-110 mx-2 min-h-[35px] max-w-[80px] lg:max-h-[50px] lg:max-w-[170px]'
                 />
               </div>
             </div>

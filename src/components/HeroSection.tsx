@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -29,7 +28,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen pt-28 pb-20 flex items-center overflow-hidden hero-gradient">
+    <section className="relative min-h-screen pt-28 pb-32 flex flex-col items-center overflow-hidden hero-gradient">
       {/* Glowing Orb */}
       <div 
         id="hero-orb"
@@ -89,52 +88,47 @@ const HeroSection = () => {
               <ArrowRight size={16} className="ml-2" />
             </Button>
           </div>
-        </div>
-      </div>
-      
-      {/* Code Preview */}
-      <div 
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[90%] max-w-5xl mx-auto glassmorphism rounded-lg border-t border-pandr-violet/20 shadow-glow z-20 animate-slide-up opacity-0" 
-        style={{ animationDelay: '0.8s' }}
-      >
-        <div className="flex items-center gap-1.5 absolute left-4 top-4">
-          <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
-          <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
-        </div>
-        <div className="overflow-hidden h-[150px] sm:h-[200px] p-8">
-          <pre className="text-xs sm:text-sm overflow-hidden">
-            <code className="font-mono">
-              <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
-              <br />
-              <br />
-              <span className="text-blue-400">const</span> <span className="text-yellow-300">PandrEditor</span> <span className="text-white">=</span> <span className="text-blue-400">()</span> <span className="text-white">=&gt;</span> <span className="text-white">&#123;</span>
-              <br />
-              &nbsp;&nbsp;<span className="text-blue-400">const</span> <span className="text-white">[code, setCode]</span> <span className="text-white">=</span> <span className="text-yellow-300">useState</span><span className="text-white">(</span><span className="text-green-400">""</span><span className="text-white">);</span>
-              <br />
-              &nbsp;&nbsp;<span className="text-blue-400">const</span> <span className="text-white">[theme, setTheme]</span> <span className="text-white">=</span> <span className="text-yellow-300">useState</span><span className="text-white">(</span><span className="text-green-400">"cosmic-violet"</span><span className="text-white">);</span>
-              <br />
-              <br />
-              &nbsp;&nbsp;<span className="text-yellow-300">useEffect</span><span className="text-white">(() =&gt; &#123;</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">const</span> <span className="text-white">pandr</span> <span className="text-white">=</span> <span className="text-blue-400">new</span> <span className="text-yellow-300">PandrEngine</span><span className="text-white">(&#123;</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-cyan-300">theme</span><span className="text-white">,</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-cyan-300">autoComplete</span><span className="text-white">:</span> <span className="text-purple-400">true</span><span className="text-white">,</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className="text-cyan-300">zenMode</span><span className="text-white">:</span> <span className="text-purple-400">true</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-white">&#125;);</span>
-              <br />
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-green-400">// Initialize the editor with AI capabilities</span>
-              <br />
-              &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-white">pandr.</span><span className="text-yellow-300">init</span><span className="text-white">();</span>
-              <br />
-              &nbsp;&nbsp;<span className="text-white">&#125;, [theme]);</span>
-            </code>
-          </pre>
+
+          {/* Code Preview dentro del hero */}
+          <div 
+            className="mt-16 w-[90%] max-w-5xl mx-auto glassmorphism rounded-lg border-t border-pandr-violet/20 shadow-glow animate-slide-up opacity-0" 
+            style={{ animationDelay: '0.8s' }}
+          >
+            <div className="flex items-center gap-1.5 absolute left-4 top-4">
+              <div className="w-3 h-3 rounded-full bg-red-500 opacity-80" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500 opacity-80" />
+              <div className="w-3 h-3 rounded-full bg-green-500 opacity-80" />
+            </div>
+            <div className="overflow-hidden h-[150px] sm:h-[200px] p-8">
+              <pre className="text-xs sm:text-sm overflow-hidden">
+                <code className="font-mono">
+                  <span className="text-blue-400">import</span> <span className="text-cyan-300">&#123; useState, useEffect &#125;</span> <span className="text-blue-400">from</span> <span className="text-green-400">"react"</span>;
+                  <br /><br />
+                  <span className="text-blue-400">const</span> <span className="text-yellow-300">PandrEditor</span> <span className="text-white">=</span> <span className="text-blue-400">()</span> <span className="text-white">=&gt;</span> <span className="text-white">&#123;</span>
+                  <br />
+                  &nbsp;&nbsp;<span className="text-blue-400">const</span> [code, setCode] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">""</span>);
+                  <br />
+                  &nbsp;&nbsp;<span className="text-blue-400">const</span> [theme, setTheme] = <span className="text-yellow-300">useState</span>(<span className="text-green-400">"cosmic-violet"</span>);
+                  <br /><br />
+                  &nbsp;&nbsp;<span className="text-yellow-300">useEffect</span>(() =&gt; &#123;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-blue-400">const</span> pandr = <span className="text-blue-400">new</span> <span className="text-yellow-300">PandrEngine</span>(&#123;
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theme,
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;autoComplete: <span className="text-purple-400">true</span>,
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zenMode: <span className="text-purple-400">true</span>
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&#125;);
+                  <br /><br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;pandr.init();
+                  <br />
+                  &nbsp;&nbsp;&#125;, [theme]);
+                </code>
+              </pre>
+            </div>
+          </div>
         </div>
       </div>
     </section>
